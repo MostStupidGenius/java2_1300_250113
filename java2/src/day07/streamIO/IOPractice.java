@@ -25,13 +25,22 @@ public class IOPractice {
 
 			// 2. 파일에 데이터 쓰기
 			// 데이터 쓰기 클래스 객체화
-			FileWriter writer = new FileWriter(file);
+			FileWriter writer = new FileWriter(file, true);
 
 			// buffered writer를 쓰기 위한 객체화
 			BufferedWriter bw = new BufferedWriter(writer);
 
 			// 3. 데이터 쓰기(write)
-			bw.write("Hello World!\n");
+			// write 또는 append 모두 동일하게 동작한다.
+			// 다만, FileWriter 객체를 생성할 때, append를 true로
+			// 설정하면 이어쓰고 기본값 false로 설정하면
+			// 모두 처음부터 다시 쓴다.
+			// write와 append가 같은 동작을 하지만 이름이 다른 이유는
+			// 위에서 append를 true로 했는지를 명시적으로 알리기 위함이다.
+			bw.write("이어서 쓰는 내용");
+			bw.newLine();
+			bw.append("Hello World!");
+			bw.newLine();
 
 			// 읽기/쓰기 객체를 사용한 후 반드시 닫아주어야 한다.
 			// 리소스 해제
